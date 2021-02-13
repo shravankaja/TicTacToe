@@ -47,10 +47,14 @@ public class TicTacToeGame {
 		System.out.println("Enter the cell you want to enter");
 		Scanner input = new Scanner(System.in);
 		int input_Position = input.nextInt();
-		if (empty_Board[input_Position] == ' ') {
-			empty_Board[input_Position] = input_User1;
+		if (input_Position > 0 && input_Position < 10) {
+			if (empty_Board[input_Position] == ' ') {
+				empty_Board[input_Position] = input_User1;
+			} else {
+				System.out.println("Position filled");
+			}
 		} else {
-			System.out.println("Position filled");
+			System.out.println("please enter valid cell range");
 		}
 	}
 
