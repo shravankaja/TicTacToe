@@ -108,7 +108,8 @@ public class TicTacToeGame {
 		} else if (empty_Board[4] == 'X' && empty_Board[5] == 'X' && empty_Board[6] == 'X' && check == true
 				|| empty_Board[4] == 'O' && empty_Board[5] == 'O' && empty_Board[6] == 'O' && check == true) {
 			System.out.println("User wins \n");
-			System.exit(0);System.exit(0);
+			System.exit(0);
+			System.exit(0);
 		} else if (empty_Board[7] == 'X' && empty_Board[8] == 'X' && empty_Board[9] == 'X' && check == true
 				|| empty_Board[7] == 'O' && empty_Board[8] == 'O' && empty_Board[9] == 'O' && check == true) {
 			System.out.println("User wins \n");
