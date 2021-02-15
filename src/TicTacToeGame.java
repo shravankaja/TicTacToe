@@ -5,6 +5,8 @@ public class TicTacToeGame {
 	public static char comp_Input;
 	public static char input_User1;
 	static char[] empty_Board = new char[10];
+	public static float turn;
+	public static boolean check;
 
 	public static char[] uc1_Initialize() {
 
@@ -43,6 +45,18 @@ public class TicTacToeGame {
 
 	}
 
+	public static boolean uc6_First_Chance() {
+		turn = Math.round(Math.random());
+		if (turn == 0.0) {
+			System.out.println("User wins first Chance");
+			check = true;
+		} else {
+			System.out.println("Comp wins turn");
+			check = false;
+		}
+		return true;
+	}
+
 	public static void uc4_Take_Input() {
 		System.out.println("Enter the cell you want to enter");
 		Scanner input = new Scanner(System.in);
@@ -65,10 +79,20 @@ public class TicTacToeGame {
 		System.out.println("User Selected input :" + input_User1);
 		System.out.println("Comp selected input :" + comp_Input);
 		uc3_Display_Board();
-		uc4_Take_Input();
-		uc3_Display_Board();
-		uc4_Take_Input();
-		uc3_Display_Board();
+		check = uc6_First_Chance();
+		System.out.println(check);
+		while (true) {
 
+			if (check == true) {
+				uc4_Take_Input();
+				uc3_Display_Board();
+				uc4_Take_Input();
+				uc3_Display_Board();
+				break;
+			} else {
+				System.out.println("Computer turn");
+				break;
+			}
+		}
 	}
 }
