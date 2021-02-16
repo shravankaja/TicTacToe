@@ -2,7 +2,7 @@ import java.util.*;
 
 public class TicTacToeGame { // class
 
-	public static char comp_Input; //all static variablles
+	public static char comp_Input; // all static variablles
 	public static char input_User1;
 	static char[] empty_Board = new char[10];
 	public static float turn;
@@ -14,7 +14,7 @@ public class TicTacToeGame { // class
 	public static int input_Position_Comp;
 	static int[] positionArray = new int[20];
 
-	public static char[] uc1_Initialize() {  //intialize board using an array 
+	public static char[] uc1_Initialize() { // intialize board using an array
 
 		for (int i = 0; i < 10; i++) {
 			empty_Board[i] = ' ';
@@ -23,7 +23,7 @@ public class TicTacToeGame { // class
 
 	}
 
-	public static char uc2_Select_Char() {   // method to assign user and comp with X or O
+	public static char uc2_Select_Char() { // method to assign user and comp with X or O
 		System.out.println("Select X or O");
 		Scanner input = new Scanner(System.in);
 		char input_User = input.next().charAt(0);
@@ -39,7 +39,7 @@ public class TicTacToeGame { // class
 		return input_User;
 	}
 
-	public static void uc3_Display_Board() { // displays board using array 
+	public static void uc3_Display_Board() { // displays board using array
 
 		System.out.println("|---|---|---|");
 		System.out.println("| " + empty_Board[1] + " | " + empty_Board[2] + " | " + empty_Board[3] + " |");
@@ -51,7 +51,7 @@ public class TicTacToeGame { // class
 
 	}
 
-	public static void uc6_First_Chance() {  // toss for deciding who plays first
+	public static void uc6_First_Chance() { // toss for deciding who plays first
 		turn = Math.round(Math.random());
 		if (turn == 0.0) {
 			System.out.println("User wins first Chance");
@@ -171,6 +171,7 @@ public class TicTacToeGame { // class
 				System.exit(0);
 				break;
 			}
+
 			if (compChoiceToBeTaken != 0) { // to ensure comp makes a intelligent move
 				if (empty_Board[compChoiceToBeTaken] == ' ') {
 					empty_Board[compChoiceToBeTaken] = comp_Input;
@@ -197,13 +198,20 @@ public class TicTacToeGame { // class
 	}
 
 	public static void blockUserWinChances() { // checking for line patterns
-		for (int i = 1; i < 10; i = i + 3) {
+		for (int i = 1; i < 10; i = i + 3) { // horiontal lines
 			if (positionArray[i] == i && positionArray[i + 1] == i + 1) {
 				compChoiceToBeTaken = i + 2;
 			} else if (positionArray[i + 2] == i + 2 && positionArray[i + 1] == i + 1) {
 				compChoiceToBeTaken = i;
 			} else if (positionArray[i] == i && positionArray[i + 2] == i + 3) {
 				compChoiceToBeTaken = i + 1;
+			}
+
+		}
+		for (int i = 1; i < 10; i = i + 3) // vertical lines
+		{
+			if (positionArray[i] == i && positionArray[i + 3] == i + 3) {
+				compChoiceToBeTaken = i + 6;
 			}
 
 		}
@@ -237,7 +245,7 @@ public class TicTacToeGame { // class
 			// blockUserWinChances();
 			System.out.println("----------------------------------------------------------------");
 		}
-		while (true) {  // to give alternate chances to user and comp
+		while (true) { // to give alternate chances to user and comp
 			if (chance == 0) {
 				blockUserWinChances();
 				comp_Input();
