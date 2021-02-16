@@ -203,7 +203,7 @@ public class TicTacToeGame { // class
 				compChoiceToBeTaken = i + 2;
 			} else if (positionArray[i + 2] == i + 2 && positionArray[i + 1] == i + 1) {
 				compChoiceToBeTaken = i;
-			} else if (positionArray[i] == i && positionArray[i + 2] == i + 3) {
+			} else if (positionArray[i] == i && positionArray[i + 2] == i + 2) {
 				compChoiceToBeTaken = i + 1;
 			}
 
@@ -215,6 +215,19 @@ public class TicTacToeGame { // class
 			}
 
 		}
+		for (int i = 1; i < 10; i = i + 4) // one diagonal
+		{
+			if (positionArray[i] == i && positionArray[i + 4] == i + 4) {
+				compChoiceToBeTaken = i + 8;
+			}
+		}
+		for (int i = 3; i < 10; i = i + 2) // one diagonal
+		{
+			if (positionArray[i] == i && positionArray[i + 2] == i + 2) {
+				compChoiceToBeTaken = i + 4;
+			}
+		}
+
 	}
 
 	public static void main(String Args[]) {
