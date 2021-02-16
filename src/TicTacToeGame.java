@@ -11,7 +11,9 @@ public class TicTacToeGame { // class
 	static int rand_Input_Comp;
 	static int chance;
 	static int compChoiceToBeTaken;
+	static char check_condition;
 	public static int input_Position_Comp;
+	static int end_game = 0;
 	static int[] positionArray = new int[20];
 
 	public static char[] uc1_Initialize() { // intialize board using an array
@@ -31,10 +33,13 @@ public class TicTacToeGame { // class
 		if (input_User == 'X') {
 			input_User = 'X';
 			comp_Input = 'O';
+			check_condition = 'x';
 
 		} else if (input_User == 'O') {
 			input_User = 'O';
 			comp_Input = 'X';
+			check_condition = 'o';
+
 		}
 		return input_User;
 	}
@@ -67,7 +72,7 @@ public class TicTacToeGame { // class
 		while (true) {
 			if (input_count == 9) {
 				System.out.println("No more turn left");
-				System.exit(0);
+				end_game = 1;
 				break;
 			}
 			System.out.println("Enter the cell you want to enter");
@@ -94,81 +99,48 @@ public class TicTacToeGame { // class
 	}
 
 	public static void uc7_Win_Tie_Change() { // checking line and diagonal filled with X or O by user or comp
-		if (empty_Board[1] == 'X' && empty_Board[2] == 'X' && empty_Board[3] == 'X' && check == true
-				|| empty_Board[1] == 'O' && empty_Board[2] == 'O' && empty_Board[3] == 'O' && check == true) {
-			System.out.println("User wins \n");
-			System.exit(0);
-		} else if (empty_Board[1] == 'X' && empty_Board[2] == 'X' && empty_Board[3] == 'X' && check == false
-				|| empty_Board[1] == 'O' && empty_Board[2] == 'O' && empty_Board[3] == 'O' && check == false) {
-			System.out.println("Comp wins \n");
-			System.exit(0);
-		} else if (empty_Board[4] == 'X' && empty_Board[5] == 'X' && empty_Board[6] == 'X' && check == false
-				|| empty_Board[4] == 'O' && empty_Board[5] == 'O' && empty_Board[6] == 'O' && check == false) {
-			System.out.println("Comp Wins");
-			System.exit(0);
-		} else if (empty_Board[7] == 'X' && empty_Board[8] == 'X' && empty_Board[9] == 'X' && check == false
-				|| empty_Board[7] == 'O' && empty_Board[8] == 'O' && empty_Board[9] == 'O' && check == false) {
-			System.out.println("Comp Wins");
-			System.exit(0);
-		} else if (empty_Board[4] == 'X' && empty_Board[5] == 'X' && empty_Board[6] == 'X' && check == true
-				|| empty_Board[4] == 'O' && empty_Board[5] == 'O' && empty_Board[6] == 'O' && check == true) {
-			System.out.println("User wins \n");
-			System.exit(0);
-			System.exit(0);
-		} else if (empty_Board[7] == 'X' && empty_Board[8] == 'X' && empty_Board[9] == 'X' && check == true
-				|| empty_Board[7] == 'O' && empty_Board[8] == 'O' && empty_Board[9] == 'O' && check == true) {
-			System.out.println("User wins \n");
-			System.exit(0);
-		} else if (empty_Board[1] == 'X' && empty_Board[4] == 'X' && empty_Board[7] == 'X' && check == true
-				|| empty_Board[1] == 'O' && empty_Board[4] == 'O' && empty_Board[7] == 'O' && check == true) {
-			System.out.println("User wins \n");
-			System.exit(0);
-		} else if (empty_Board[2] == 'X' && empty_Board[5] == 'X' && empty_Board[8] == 'X' && check == true
-				|| empty_Board[2] == 'O' && empty_Board[5] == 'O' && empty_Board[8] == 'O' && check == true) {
-			System.out.println("User wins \n");
-			System.exit(0);
-		} else if (empty_Board[3] == 'X' && empty_Board[6] == 'X' && empty_Board[9] == 'X' && check == true
-				|| empty_Board[3] == 'O' && empty_Board[6] == 'O' && empty_Board[9] == 'O' && check == true) {
-			System.out.println("User wins \n");
-			System.exit(0);
-		} else if (empty_Board[1] == 'X' && empty_Board[4] == 'X' && empty_Board[7] == 'X' && check == false
-				|| empty_Board[1] == 'O' && empty_Board[4] == 'O' && empty_Board[7] == 'O' && check == false) {
-			System.out.println("Comp wins \n");
-			System.exit(0);
-		} else if (empty_Board[2] == 'X' && empty_Board[5] == 'X' && empty_Board[8] == 'X' && check == false
-				|| empty_Board[2] == 'O' && empty_Board[5] == 'O' && empty_Board[8] == 'O' && check == false) {
-			System.out.println("Comp wins \n");
-			System.exit(0);
-		} else if (empty_Board[3] == 'X' && empty_Board[6] == 'X' && empty_Board[9] == 'X' && check == false
-				|| empty_Board[3] == 'O' && empty_Board[6] == 'O' && empty_Board[9] == 'O' && check == false) {
-			System.out.println("Comp wins \n");
-			System.exit(0);
-		} else if (empty_Board[1] == 'X' && empty_Board[5] == 'X' && empty_Board[9] == 'X' && check == false
-				|| empty_Board[1] == 'O' && empty_Board[5] == 'O' && empty_Board[9] == 'O' && check == false) {
-			System.out.println("Comp wins \n");
-			System.exit(0);
-		} else if (empty_Board[3] == 'X' && empty_Board[5] == 'X' && empty_Board[7] == 'X' && check == false
-				|| empty_Board[3] == 'O' && empty_Board[5] == 'O' && empty_Board[7] == 'O' && check == false) {
-			System.out.println("Comp wins \n");
-			System.exit(0);
-		} else if (empty_Board[1] == 'X' && empty_Board[5] == 'X' && empty_Board[9] == 'X' && check == true
-				|| empty_Board[1] == 'O' && empty_Board[5] == 'O' && empty_Board[9] == 'O' && check == true) {
-			System.out.println("User wins \n");
-			System.exit(0);
-		} else if (empty_Board[3] == 'X' && empty_Board[5] == 'X' && empty_Board[7] == 'X' && check == true
-				|| empty_Board[3] == 'O' && empty_Board[5] == 'O' && empty_Board[7] == 'O' && check == true) {
-			System.out.println("User wins \n");
-			System.exit(0);
-		} else {
-			System.out.println("No winner yet");
+
+		for (int i = 1; i < 10; i = i + 3) { // horiontal lines
+			if (empty_Board[i] == 'X' && empty_Board[i + 1] == 'X' && empty_Board[i + 2] == 'X'
+					&& check_condition == 'x'
+					|| empty_Board[i] == 'O' && empty_Board[i + 1] == 'O' && empty_Board[i + 2] == 'O'
+							&& check_condition == 'o') {
+				System.out.println("user wins ");
+				end_game = 1;
+				break;
+			} else if (empty_Board[i] == 'X' && empty_Board[i + 1] == 'X' && empty_Board[i + 2] == 'X'
+					|| empty_Board[i] == 'O' && empty_Board[i + 1] == 'O' && empty_Board[i + 2] == 'O') {
+				System.out.println("Comp Wins ");
+				end_game = 1;
+				break;
+			}
+
 		}
+		for (int i = 1; i < 4; i++) {
+			if (empty_Board[i] == 'X' && empty_Board[i + 3] == 'X' && empty_Board[i + 6] == 'X'
+					&& check_condition == 'x'
+					|| empty_Board[i] == 'O' && empty_Board[i + 3] == 'O' && empty_Board[i + 6] == 'O'
+							&& check_condition == 'o') {
+				System.out.println("user wins ");
+
+				end_game = 1;
+				break;
+			} else if (empty_Board[i] == 'X' && empty_Board[i + 3] == 'X' && empty_Board[i + 6] == 'X'
+					|| empty_Board[i] == 'O' && empty_Board[i + 3] == 'O' && empty_Board[i + 6] == 'O') {
+				System.out.println("comp wins");
+				end_game = 1;
+				break;
+			}
+
+		}
+
 	}
 
 	public static void comp_Input() { // incorporating behavior and accepting input from comp
 		while (true) {
 			if (input_count == 9) { // to exit game if turn condition has been meet
 				System.out.println("No more turn left");
-				System.exit(0);
+				end_game = 1;
 				break;
 			}
 
@@ -208,45 +180,27 @@ public class TicTacToeGame { // class
 			}
 
 		}
-		for (int i = 1; i < 10; i = i + 3) // vertical lines
-		{
+		for (int i = 1; i < 4; i++) {// ertical lines
 			if (positionArray[i] == i && positionArray[i + 3] == i + 3) {
 				compChoiceToBeTaken = i + 6;
+			} else if (positionArray[i + 3] == i + 3 && positionArray[i + 6] == i + 6) {
+				compChoiceToBeTaken = i;
+			}
+
+			else if (positionArray[i] == i && positionArray[i + 6] == i + 6) {
+				compChoiceToBeTaken = i + 3;
 			}
 
 		}
-		for (int i = 1; i < 10; i = i + 4) // one diagonal
-		{
-			if (positionArray[i] == i && positionArray[i + 4] == i + 4) {
-				compChoiceToBeTaken = i + 8;
-			}
-		}
-		for (int i = 3; i < 10; i = i + 2) // one diagonal
-		{
-			if (positionArray[i] == i && positionArray[i + 2] == i + 2) {
-				compChoiceToBeTaken = i + 4;
-			}
-		}
-
 	}
 
-	public static void main(String Args[]) {
-		int play_Another_Game = 0;
-
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Welcome to Tic Tac Toe");
-		uc1_Initialize();
-		input_User1 = uc2_Select_Char();
-		System.out.println("User Selected input :" + input_User1);
-		System.out.println("Comp selected input :" + comp_Input);
-		uc3_Display_Board();
-		uc6_First_Chance();
+	public static void firstChanceDecider() {
 		if (check == true) {
 			uc4_Take_Input(); // first chance
 
 			chance = 0;
 			uc3_Display_Board();
-			// blockUserWinChances();
+
 			System.out.println("----------------------------------------------------------------");
 		} else if (check == false) {
 
@@ -255,37 +209,48 @@ public class TicTacToeGame { // class
 			chance = 1;
 
 			uc3_Display_Board();
-			// blockUserWinChances();
+
 			System.out.println("----------------------------------------------------------------");
 		}
-		while (true) { // to give alternate chances to user and comp
+		while (end_game == 0) { // to give alternate chances to user and comp
 			if (chance == 0) {
 				blockUserWinChances();
 				comp_Input();
 				uc3_Display_Board();
 				chance = 1;
 				uc7_Win_Tie_Change();
-
-				// blockUserWinChances();
 				System.out.println("----------------------------------------------------------------");
-
 				continue;
 			} else if (chance == 1) {
 				uc4_Take_Input();
 				uc3_Display_Board();
-
 				chance = 0;
 				uc7_Win_Tie_Change();
 				uc3_Display_Board();
-				// blockUserWinChances();
 				System.out.println("----------------------------------------------------------------");
-
 				continue;
 			}
 
-			System.out.println("Enter 1 if you want to play another game");
-			play_Another_Game = sc.nextInt();
 		}
+
+	}
+
+	public static void main(String Args[]) {
+		int play_Another_Game = 0;
+		do {
+			Scanner sc = new Scanner(System.in);
+			System.out.println("Welcome to Tic Tac Toe");
+			uc1_Initialize();
+			input_User1 = uc2_Select_Char();
+			System.out.println("User Selected input :" + input_User1);
+			System.out.println("Comp selected input :" + comp_Input);
+			uc3_Display_Board();
+			uc6_First_Chance();
+			firstChanceDecider();
+			System.out.println("Enter 1 if you want to play another game");
+
+			play_Another_Game = sc.nextInt();
+		} while (play_Another_Game == 1);
 
 	}
 }
